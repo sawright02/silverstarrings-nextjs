@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#F0EBE1"/>
+
+  <!-- EST 2026 -->
+  <text x="200" y="72" text-anchor="middle" fill="#8A8C2A" font-family="Georgia, serif" font-size="13" font-weight="600" letter-spacing="3">EST 2026</text>
+
+  <!-- SILVER arc - approximated with text path -->
+  <defs>
+    <path id="arcTop" d="M 68,210 A 140,140 0 0,1 332,210"/>
+  </defs>
+  <text fill="#8A8C2A" font-family="Georgia, serif" font-size="62" font-weight="700" letter-spacing="4">
+    <textPath href="#arcTop" startOffset="50%" text-anchor="middle">SILVER</textPath>
+  </text>
+
+  <!-- Center icon: rounded square with star -->
+  <!-- Outer rounded square -->
+  <rect x="148" y="178" width="104" height="104" rx="16" ry="16" fill="none" stroke="#922424" stroke-width="5"/>
+
+  <!-- 8-pointed star shape -->
+  <path d="M200,195 L207,218 L228,211 L215,228 L228,245 L207,238 L200,261 L193,238 L172,245 L185,228 L172,211 L193,218 Z"
+        fill="#922424"/>
+  <!-- Center oval -->
+  <ellipse cx="200" cy="230" rx="9" ry="12" fill="#F0EBE1"/>
+
+  <!-- STAR text below icon -->
+  <defs>
+    <path id="arcBottom" d="M 68,195 A 140,140 0 0,0 332,195"/>
+  </defs>
+  <text fill="#8A8C2A" font-family="Georgia, serif" font-size="70" font-weight="700" letter-spacing="6">
+    <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">STAR</textPath>
+  </text>
+
+  <!-- RING CO -->
+  <text x="200" y="350" text-anchor="middle" fill="#8A8C2A" font-family="Georgia, serif" font-size="13" font-weight="600" letter-spacing="5">RING CO</text>
+</svg>

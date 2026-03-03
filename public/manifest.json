@@ -1,0 +1,26 @@
+{
+  "name": "Silver Star Ring Co",
+  "short_name": "Silver Star",
+  "description": "Handcrafted sterling silver spoon rings. Each ring is a unique piece of history, transformed.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F0EBE1",
+  "theme_color": "#8A8C2A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "lifestyle"],
+  "screenshots": []
+}
