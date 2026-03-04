@@ -7,7 +7,11 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(npm run build)",
       "Bash(lsof -ti :3000)",
-      "Bash(xargs kill -9)"
+      "Bash(xargs kill -9)",
+      "Bash(convert --version)",
+      "Bash(node -e \"require\\(''sharp''\\)\")",
+      "Bash(node -e \"require\\(''sharp''\\); console.log\\(''ok''\\)\")",
+      "Bash(node -e \":*)"
     ]
   }
 }
