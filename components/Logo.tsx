@@ -12,8 +12,8 @@ export function Logo({ size = 120, variant = "full", className = "" }: LogoProps
     // Stamp icon — cream-filled rounded rect with 8-pointed star + oval, matching logo.png
     return (
       <svg
-        width={size * 0.4}
-        height={size * 0.4}
+        width={size * 0.77}
+        height={size * 0.77}
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
