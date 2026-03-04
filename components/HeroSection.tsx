@@ -137,7 +137,7 @@ export function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <button
+      {/* <button
         onClick={handleScroll}
         className="absolute right-8 md:right-12 bottom-12 flex flex-col items-center gap-2 group"
         aria-label="Scroll down"
@@ -150,7 +150,7 @@ export function HeroSection() {
           Scroll
         </span>
         <div className="w-px h-12 bg-gradient-to-b from-bark/30 to-transparent" />
-      </button>
+      </button> */}
 
       {/* Bottom grain texture */}
       <div
