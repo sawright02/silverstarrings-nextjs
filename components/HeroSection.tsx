@@ -51,21 +51,21 @@ export function HeroSection() {
       />
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto pb-24">
         {/* Logo */}
         <div
-          className="transition-all duration-1000"
+          className="mt-10 transition-all duration-1000"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? "scale(1) translateY(0)" : "scale(0.9) translateY(20px)",
           }}
         >
-          <Logo size={680} variant="full" className="animate-float" />
+          <Logo size={440} variant="full" className="animate-float" />
         </div>
 
         {/* Tagline */}
         <div
-          className="mt-8 transition-all duration-1000 delay-300"
+          className="mt-5 transition-all duration-1000 delay-300"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? "translateY(0)" : "translateY(20px)",
@@ -108,7 +108,7 @@ export function HeroSection() {
 
         {/* CTAs */}
         <div
-          className="mt-10 flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000"
+          className="mt-16 flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? "translateY(0)" : "translateY(20px)",
@@ -139,7 +139,7 @@ export function HeroSection() {
       {/* Scroll indicator */}
       <button
         onClick={handleScroll}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 group"
+        className="absolute right-8 md:right-12 bottom-12 flex flex-col items-center gap-2 group"
         aria-label="Scroll down"
         style={{
           opacity: loaded ? 1 : 0,

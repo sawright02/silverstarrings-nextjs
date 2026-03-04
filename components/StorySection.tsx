@@ -109,7 +109,7 @@ export function StorySection() {
           }}
         >
           {/* Wrapper sized to photo — background card inset is relative to this */}
-          <div className="relative" style={{ width: "85%" }}>
+          <div className="relative" style={{ width: "72%" }}>
             {/* Centered background card for depth */}
             <div
               className="absolute rounded-2xl"

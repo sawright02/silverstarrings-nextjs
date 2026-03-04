@@ -5,7 +5,9 @@
       "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-turbopack --yes)",
       "Bash(npm install)",
       "mcp__Claude_Preview__preview_start",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(lsof -ti :3000)",
+      "Bash(xargs kill -9)"
     ]
   }
 }
