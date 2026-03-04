@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 
 interface LogoProps {
   size?: number;
@@ -63,44 +62,16 @@ export function Logo({ size = 120, variant = "full", className = "" }: LogoProps
     );
   }
 
-  // Full logo — uses logo.png with an SVG feColorMatrix filter that turns near-cream
-  // pixels transparent. This works regardless of stacking context (unlike mix-blend-mode).
-  // Formula: A' = -1.33R - 1.33G - 1.33B + 3  →  cream pixels → 0, dark ink → 1
+  // Full logo — use plain img for SVG (Next.js image optimizer doesn't support SVGs)
   return (
-    <>
-      <svg width="0" height="0" style={{ position: "absolute", overflow: "hidden" }} aria-hidden>
-        <defs>
-          <filter id="logoRemoveCream" colorInterpolationFilters="sRGB" x="0%" y="0%" width="100%" height="100%">
-            {/*
-            Step 1 — feColorMatrix: A' = -1.89·B + 1.667
-              Cream  (#F0EBE1, B≈0.882) → A≈0  (transparent)
-              Olive  (#8A8C2A, B≈0.165) → A=1  (opaque)
-              Crimson(#922424, B≈0.141) → A=1  (opaque)
-              Problem: empty pixels outside the image have B=0, giving A=1.667→black.
-            Step 2 — feComposite "in": masks result back to the original alpha,
-              so pixels that were transparent in the source PNG stay transparent.
-          */}
-            <feColorMatrix
-              type="matrix"
-              values="1 0 0 0 0
-                      0 1 0 0 0
-                      0 0 1 0 0
-                      0 0 -1.89 0 1.667"
-              result="recolored"
-            />
-            <feComposite in="recolored" in2="SourceGraphic" operator="in" />
-          </filter>
-        </defs>
-      </svg>
-      <Image
-        src="/logo.png"
-        width={size}
-        height={size}
-        alt="Silver Star Ring Co"
-        className={className}
-        style={{ filter: "url(#logoRemoveCream)", display: "block" }}
-        priority
-      />
-    </>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/logo.svg"
+      width={size}
+      height={Math.round(size * 1008 / 1024)}
+      alt="Silver Star Ring Co"
+      className={className}
+      style={{ display: "block" }}
+    />
   );
 }
