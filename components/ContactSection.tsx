@@ -61,8 +61,8 @@ export function ContactSection() {
               <div>
                 <p className="font-body text-xs tracking-widest text-bark/40 uppercase">Custom Commissions</p>
                 <p className="mt-1 font-body text-sm text-bark/60 leading-relaxed">
-                  Have a family spoon you'd like transformed? We accept
-                  commission work — send us the story and we'll make it happen.
+                  Have a family spoon you'd like transformed? I accept
+                  commission work — send me the story and we'll make it happen.
                 </p>
               </div>
             </div>
@@ -76,7 +76,7 @@ export function ContactSection() {
               </div>
               <div>
                 <p className="font-body text-xs tracking-widest text-bark/40 uppercase">Email</p>
-                <p className="mt-1 font-body text-sm text-olive">hello@silverstarringco.com</p>
+                <p className="mt-1 font-body text-sm text-olive">stella@silverstarrings.com</p>
               </div>
             </div>
 
@@ -133,7 +133,7 @@ export function ContactSection() {
                 Message Sent
               </h3>
               <p className="font-body text-sm text-bark/50">
-                We'll be in touch within 24 hours. Thank you for reaching out.
+                I'll be in touch within 24 hours. Thank you for reaching out.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
@@ -215,7 +215,7 @@ export function ContactSection() {
                   required
                   rows={5}
                   className="w-full px-4 py-3 bg-cream border border-sand/60 focus:border-olive/50 outline-none font-body text-sm text-bark transition-colors duration-200 resize-none"
-                  placeholder="Tell us what you're looking for..."
+                  placeholder="Tell me what you're looking for..."
                 />
               </div>
 

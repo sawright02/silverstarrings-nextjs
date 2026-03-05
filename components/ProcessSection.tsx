@@ -8,7 +8,7 @@ const steps = [
     number: "01",
     title: "Source & Select",
     description:
-      "We hunt antique markets, estate sales, and silver collections for genuine sterling spoons — each with unique hallmarks, patterns, and patinas that define the final ring.",
+      "I hunt antique markets, estate sales, and silver collections for genuine sterling spoons — each with unique hallmarks, patterns, and patinas that define the final ring.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
         <circle cx="24" cy="20" r="12" stroke="#922424" strokeWidth="2"/>
@@ -22,7 +22,7 @@ const steps = [
     number: "02",
     title: "Anneal & Shape",
     description:
-      "The spoon is gently heated to make it malleable. Then, using traditional silversmithing tools, we carefully bend and form it around a steel mandrel to create the perfect ring shape.",
+      "The spoon is gently heated to make it malleable. Then, using traditional silversmithing tools, I carefully bend and form it around a steel mandrel to create the perfect ring shape.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
         <path d="M8 40 C8 40 16 34 24 34 C32 34 40 40 40 40" stroke="#922424" strokeWidth="2" strokeLinecap="round"/>

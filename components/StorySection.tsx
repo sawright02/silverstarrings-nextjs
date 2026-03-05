@@ -48,14 +48,14 @@ export function StorySection() {
 
           <p className="mt-8 font-body text-base leading-relaxed text-bark/60">
             Silver Star Ring Co was born from a simple obsession: transforming
-            antique sterling silver spoons into rings that carry the weight of
+            antique spoons into rings that carry the weight of
             history. Each piece begins as a spoon — perhaps a Victorian
             tablespoon, an ornate serving utensil, or a monogrammed teaspoon
             passed down through generations.
           </p>
 
           <p className="mt-4 font-body text-base leading-relaxed text-bark/60">
-            Through patient craftsmanship, we bend, shape, and polish these
+            Through patient craftsmanship, I bend, shape, and polish these
             heirlooms into wearable art. No two rings are identical. Each one
             preserves the original hallmarks, engravings, and patina that give
             it its singular character.
@@ -70,7 +70,7 @@ export function StorySection() {
                 100%
               </p>
               <p className="font-body text-xs tracking-wider text-bark/40 uppercase mt-1">
-                Sterling Silver
+                Handcrafted
               </p>
             </div>
             <div className="w-px h-12 bg-sand" />

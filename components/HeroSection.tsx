@@ -131,7 +131,7 @@ export function HeroSection() {
             }}
             className="btn-outline"
           >
-            Our Story
+            My Story
           </button>
         </div>
       </div>

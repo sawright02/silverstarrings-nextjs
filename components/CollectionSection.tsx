@@ -120,7 +120,7 @@ export function CollectionSection() {
             </h2>
           </div>
           <p className="font-body text-sm text-bark/50 max-w-xs leading-relaxed">
-            Browse our current selection of handcrafted spoon rings. All pieces
+            Browse my current selection of handcrafted spoon rings. All pieces
             are one-of-a-kind and ship within 3–5 days.
           </p>
         </div>
