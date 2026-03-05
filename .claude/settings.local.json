@@ -12,7 +12,9 @@
       "Bash(node -e \"require\\(''sharp''\\)\")",
       "Bash(node -e \"require\\(''sharp''\\); console.log\\(''ok''\\)\")",
       "Bash(node -e \":*)",
-      "Bash(claude mcp list)"
+      "Bash(claude mcp list)",
+      "Bash(ls /Users/shanewright/Development/stella/silverstarrings-nextjs/public/logo.*)",
+      "Bash(identify /Users/shanewright/Development/stella/silverstarrings-nextjs/public/logo.png)"
     ]
   }
 }

@@ -73,13 +73,19 @@ export function Footer() {
             © 2026 Silver Star Ring Co. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {["Instagram", "Pinterest", "Etsy"].map((s) => (
+            {[
+              { label: "Instagram", href: "https://www.instagram.com/silverstar.rings/" },
+              { label: "Linktree", href: "https://www.linktr.ee/stella.mininger/" },
+              { label: "Venmo", href: "https://venmo.com/u/stella-mininger/" },
+            ].map((s) => (
               <a
-                key={s}
-                href="#"
+                key={s.label}
+                href={s.href}
+                target={s.href !== "#" ? "_blank" : undefined}
+                rel={s.href !== "#" ? "noopener noreferrer" : undefined}
                 className="font-body text-xs text-sand/30 hover:text-sand/60 transition-colors duration-200 tracking-wider"
               >
-                {s}
+                {s.label}
               </a>
             ))}
           </div>

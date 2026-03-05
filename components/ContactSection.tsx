@@ -98,13 +98,19 @@ export function ContactSection() {
           <div className="mt-12 flex items-center gap-4">
             <p className="font-body text-xs tracking-widest text-bark/30 uppercase">Follow</p>
             <div className="flex gap-3">
-              {["Instagram", "Pinterest", "Etsy"].map((s) => (
+              {[
+                { label: "Instagram", href: "https://www.instagram.com/silverstar.rings/" },
+                { label: "Linktree", href: "https://www.linktr.ee/stella.mininger/" },
+                { label: "Venmo", href: "https://venmo.com/u/stella-mininger/" },
+              ].map((s) => (
                 <a
-                  key={s}
-                  href="#"
+                  key={s.label}
+                  href={s.href}
+                  target={s.href !== "#" ? "_blank" : undefined}
+                  rel={s.href !== "#" ? "noopener noreferrer" : undefined}
                   className="font-body text-xs text-bark/40 hover:text-olive transition-colors duration-200 underline underline-offset-4"
                 >
-                  {s}
+                  {s.label}
                 </a>
               ))}
             </div>
