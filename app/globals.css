@@ -109,14 +109,14 @@ section {
 
 /* Button styles */
 .btn-primary {
-  @apply inline-flex items-center gap-2 px-8 py-4 bg-bark text-cream font-body font-medium tracking-widest text-xs uppercase transition-all duration-300;
+  @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-bark text-cream font-body font-medium tracking-widest text-xs uppercase transition-all duration-300;
 }
 .btn-primary:hover {
   @apply bg-bark-light;
 }
 
 .btn-outline {
-  @apply inline-flex items-center gap-2 px-8 py-4 border border-bark text-bark font-body font-medium tracking-widest text-xs uppercase transition-all duration-300;
+  @apply inline-flex items-center justify-center gap-2 px-8 py-4 border border-bark text-bark font-body font-medium tracking-widest text-xs uppercase transition-all duration-300;
 }
 .btn-outline:hover {
   @apply bg-bark text-cream;
