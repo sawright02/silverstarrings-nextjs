@@ -51,10 +51,10 @@ export function HeroSection() {
       />
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto pb-24">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto pb-16 md:pb-24">
         {/* Logo */}
         <div
-          className="mt-10 transition-all duration-1000"
+          className="mt-6 md:mt-10 transition-all duration-1000"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? "scale(1) translateY(0)" : "scale(0.9) translateY(20px)",
@@ -65,7 +65,7 @@ export function HeroSection() {
 
         {/* Tagline */}
         <div
-          className="mt-5 transition-all duration-1000 delay-300"
+          className="mt-2 md:mt-5 transition-all duration-1000 delay-300"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? "translateY(0)" : "translateY(20px)",
@@ -81,7 +81,7 @@ export function HeroSection() {
 
         {/* Divider */}
         <div
-          className="mt-6 transition-all duration-1000 delay-500"
+          className="mt-3 md:mt-6 transition-all duration-1000 delay-500"
           style={{ opacity: loaded ? 1 : 0 }}
         >
           <div className="flex items-center gap-4">
@@ -93,7 +93,7 @@ export function HeroSection() {
 
         {/* Sub tagline */}
         <div
-          className="mt-6 transition-all duration-1000 delay-700"
+          className="mt-3 md:mt-6 transition-all duration-1000 delay-700"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? "translateY(0)" : "translateY(10px)",
@@ -102,13 +102,13 @@ export function HeroSection() {
           <p
             className="font-body text-sm tracking-widest text-bark/50 uppercase"
           >
-            Handcrafted · Sterling Silver · One of a Kind
+            Handcrafted · One of a Kind
           </p>
         </div>
 
         {/* CTAs */}
         <div
-          className="mt-16 flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000"
+          className="mt-8 md:mt-16 flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? "translateY(0)" : "translateY(20px)",
