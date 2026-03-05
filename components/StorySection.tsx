@@ -18,7 +18,7 @@ export function StorySection() {
       <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 hidden xl:flex items-center gap-3 -rotate-90 origin-center">
         <div className="w-12 h-px bg-olive/30" />
         <span className="font-body text-xs tracking-widest text-bark/30 uppercase whitespace-nowrap">
-          Our Story
+          My Story
         </span>
       </div>
 

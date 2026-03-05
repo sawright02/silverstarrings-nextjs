@@ -17,6 +17,7 @@ const rings = [
     tagColor: "#922424",
     svgColor: "#8A8C2A",
     patternId: "rose",
+    image: "/ring10.png",
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const rings = [
     tagColor: "#8A8C2A",
     svgColor: "#922424",
     patternId: "nouveau",
+    image: "/ring3.png",
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ const rings = [
     tagColor: "#6B6D1E",
     svgColor: "#4A3D2A",
     patternId: "mono",
+    image: "/ring2.png",
   },
   {
     id: 4,
@@ -56,6 +59,7 @@ const rings = [
     tagColor: "#8C7B6A",
     svgColor: "#2C2418",
     patternId: "hammered",
+    image: "/ring7.png",
   },
   {
     id: 5,
@@ -69,6 +73,7 @@ const rings = [
     tagColor: "#922424",
     svgColor: "#922424",
     patternId: "fiddle",
+    image: "/ring4.png",
   },
   {
     id: 6,
@@ -82,6 +87,7 @@ const rings = [
     tagColor: "#6B6D1E",
     svgColor: "#8A8C2A",
     patternId: "wide",
+    image: "/ring8.png",
   },
 ];
 
@@ -119,7 +125,7 @@ export function CollectionSection() {
               <em>A Universe</em>
             </h2>
           </div>
-          <p className="font-body text-sm text-bark/50 max-w-xs leading-relaxed">
+          <p className="font-body text-sm text-bark/50 max-w-sm leading-relaxed">
             Browse my current selection of handcrafted spoon rings. All pieces
             are one-of-a-kind and ship within 3–5 days.
           </p>
@@ -206,12 +212,21 @@ function RingCard({
           {ring.tag}
         </div>
 
-        {/* Ring SVG illustration */}
+        {/* Ring image or SVG illustration */}
         <div
           className="absolute inset-0 flex items-center justify-center transition-transform duration-500"
           style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}
         >
-          <RingSVG ring={ring} />
+          {ring.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={ring.image}
+              alt={ring.name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <RingSVG ring={ring} />
+          )}
         </div>
 
         {/* Overlay on hover */}
