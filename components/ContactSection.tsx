@@ -7,6 +7,8 @@ export function ContactSection() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, 0.1);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -15,9 +17,26 @@ export function ContactSection() {
     type: "general",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -76,7 +95,7 @@ export function ContactSection() {
               </div>
               <div>
                 <p className="font-body text-xs tracking-widest text-bark/40 uppercase">Email</p>
-                <p className="mt-1 font-body text-sm text-olive">stella@silverstarrings.com</p>
+                <a href="mailto:stella@silverstarrings.com" className="mt-1 font-body text-sm text-olive hover:underline underline-offset-4 transition-all">stella@silverstarrings.com</a>
               </div>
             </div>
 
@@ -225,11 +244,18 @@ export function ContactSection() {
                 />
               </div>
 
-              <button type="submit" className="btn-primary w-full justify-center">
-                Send Message
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              {error && (
+                <p className="font-body text-xs text-crimson">
+                  Something went wrong. Please try again or email directly.
+                </p>
+              )}
+              <button type="submit" disabled={sending} className="btn-primary w-full justify-center disabled:opacity-50">
+                {sending ? "Sending…" : "Send Message"}
+                {!sending && (
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
               </button>
             </form>
           )}
