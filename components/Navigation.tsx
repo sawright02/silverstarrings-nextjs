@@ -100,24 +100,18 @@ export function Navigation() {
             </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden flex flex-col gap-1.5 p-1"
+              className="md:hidden flex items-center justify-center w-8 h-8 text-bark"
               aria-label="Toggle menu"
             >
-              <span
-                className={`block w-6 h-0.5 bg-bark transition-all duration-300 ${
-                  menuOpen ? "rotate-45 translate-y-2" : ""
-                }`}
-              />
-              <span
-                className={`block w-6 h-0.5 bg-bark transition-all duration-300 ${
-                  menuOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`block w-6 h-0.5 bg-bark transition-all duration-300 ${
-                  menuOpen ? "-rotate-45 -translate-y-2" : ""
-                }`}
-              />
+              {menuOpen ? (
+                <span className="text-3xl leading-none" style={{ fontFamily: "sans-serif" }}>×</span>
+              ) : (
+                <span className="flex flex-col gap-1.5">
+                  <span className="block w-6 h-0.5 bg-bark" />
+                  <span className="block w-6 h-0.5 bg-bark" />
+                  <span className="block w-6 h-0.5 bg-bark" />
+                </span>
+              )}
             </button>
           </div>
         </div>
@@ -140,12 +134,12 @@ export function Navigation() {
               {link.label}
             </button>
           ))}
-          <button
+          {/* <button
             onClick={() => handleNavClick("#collection")}
             className="btn-primary mt-4"
           >
             Shop Now
-          </button>
+          </button> */}
         </div>
       </div>
     </>
