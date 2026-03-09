@@ -15,7 +15,8 @@
       "Bash(claude mcp list)",
       "Bash(ls /Users/shanewright/Development/stella/silverstarrings-nextjs/public/logo.*)",
       "Bash(identify /Users/shanewright/Development/stella/silverstarrings-nextjs/public/logo.png)",
-      "Bash(node --version)"
+      "Bash(node --version)",
+      "Bash(ls /Users/shanewright/Development/stella/silverstarrings-nextjs/public/ring*.png)"
     ]
   }
 }
