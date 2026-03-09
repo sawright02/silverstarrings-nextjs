@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import type React from "react";
 import { useInView } from "@/hooks/useInView";
+import { useCart } from "@/context/CartContext";
 
 const rings = [
   {
@@ -95,6 +96,7 @@ export function CollectionSection() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, 0.05);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const { addItem, openCart } = useCart();
 
   return (
     <section
@@ -142,6 +144,10 @@ export function CollectionSection() {
               hovered={hoveredId === ring.id}
               onHover={() => setHoveredId(ring.id)}
               onLeave={() => setHoveredId(null)}
+              onAddToCart={(size) => {
+                addItem({ id: ring.id, name: ring.name, price: ring.price, image: ring.image, size });
+                openCart();
+              }}
             />
           ))}
         </div>
@@ -176,6 +182,7 @@ function RingCard({
   hovered,
   onHover,
   onLeave,
+  onAddToCart,
 }: {
   ring: (typeof rings)[0];
   delay: number;
@@ -183,7 +190,24 @@ function RingCard({
   hovered: boolean;
   onHover: () => void;
   onLeave: () => void;
+  onAddToCart: (size: string) => void;
 }) {
+  const [pickingSize, setPickingSize] = useState(false);
+
+  const handleAddClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (ring.sizes.length === 1) {
+      onAddToCart(ring.sizes[0]);
+    } else {
+      setPickingSize(true);
+    }
+  };
+
+  const handleSizeSelect = (size: string) => {
+    setPickingSize(false);
+    onAddToCart(size);
+  };
+
   return (
     <div
       className="ring-card group cursor-pointer"
@@ -193,7 +217,7 @@ function RingCard({
         transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
       }}
       onMouseEnter={onHover}
-      onMouseLeave={onLeave}
+      onMouseLeave={() => { onLeave(); setPickingSize(false); }}
     >
       {/* Image area */}
       <div
@@ -231,16 +255,37 @@ function RingCard({
 
         {/* Overlay on hover */}
         <div
-          className="absolute inset-0 flex items-end p-5 transition-opacity duration-300"
+          className="absolute inset-0 flex flex-col items-end justify-end p-5 transition-opacity duration-300"
           style={{
             opacity: hovered ? 1 : 0,
-            background:
-              "linear-gradient(to top, rgba(44,36,24,0.7) 0%, transparent 60%)",
+            background: "linear-gradient(to top, rgba(44,36,24,0.75) 0%, transparent 60%)",
           }}
         >
-          <button className="w-full py-3 bg-cream/90 text-bark font-body text-xs tracking-widest uppercase hover:bg-cream transition-colors duration-200">
-            Add to Cart
-          </button>
+          {pickingSize ? (
+            <div className="w-full space-y-2">
+              <p className="font-body text-xs text-cream/70 tracking-widest uppercase text-center">
+                Select Size
+              </p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {ring.sizes.map((s) => (
+                  <button
+                    key={s}
+                    onClick={(e) => { e.stopPropagation(); handleSizeSelect(s); }}
+                    className="px-3 py-1.5 bg-cream/90 text-bark font-body text-xs tracking-wider hover:bg-cream transition-colors duration-200 rounded"
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <button
+              onClick={handleAddClick}
+              className="w-full py-3 bg-cream/90 text-bark font-body text-xs tracking-widest uppercase hover:bg-cream transition-colors duration-200"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
 

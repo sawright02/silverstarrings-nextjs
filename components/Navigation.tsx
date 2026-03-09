@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Logo } from "./Logo";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
   { label: "Story", href: "#story" },
@@ -14,6 +15,7 @@ const navLinks = [
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { items, openCart } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,13 +69,34 @@ export function Navigation() {
             ))}
           </ul>
 
-          {/* CTA + hamburger */}
+          {/* CTA + cart + hamburger */}
           <div className="flex items-center gap-4">
             <button
               onClick={() => handleNavClick("#collection")}
               className="hidden md:inline-flex btn-primary text-xs"
             >
               Shop Now
+            </button>
+
+            {/* Cart icon */}
+            <button
+              onClick={openCart}
+              className="relative flex items-center justify-center w-9 h-9 text-bark/60 hover:text-bark transition-colors"
+              aria-label="Open cart"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 01-8 0"/>
+              </svg>
+              {items.length > 0 && (
+                <span
+                  className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full flex items-center justify-center font-body text-xs text-cream"
+                  style={{ backgroundColor: "#922424", fontSize: "10px" }}
+                >
+                  {items.length}
+                </span>
+              )}
             </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
