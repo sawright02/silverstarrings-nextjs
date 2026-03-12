@@ -5,9 +5,24 @@ import type React from "react";
 import { useInView } from "@/hooks/useInView";
 import { useCart } from "@/context/CartContext";
 
-const rings = [
+export type Ring = {
+  _id: string;
+  name: string;
+  description: string;
+  price: string;
+  material: string;
+  era: string;
+  sizes: string[];
+  tag: string;
+  tagColor: string;
+  svgColor: string;
+  patternId: string;
+  image?: string;
+};
+
+const hardcodedRings: Ring[] = [
   {
-    id: 1,
+    _id: "1",
     name: "The Victorian Rose",
     description: "c.1880 sterling teaspoon, rosette pattern",
     price: "$148",
@@ -21,7 +36,7 @@ const rings = [
     image: "/ring10.png",
   },
   {
-    id: 2,
+    _id: "2",
     name: "The Art Nouveau",
     description: "c.1905 silver, flowing floral scrollwork",
     price: "$165",
@@ -35,7 +50,7 @@ const rings = [
     image: "/ring3.png",
   },
   {
-    id: 3,
+    _id: "3",
     name: "The Monogram",
     description: "c.1920s sterling, engraved script letter",
     price: "$185",
@@ -49,7 +64,7 @@ const rings = [
     image: "/ring2.png",
   },
   {
-    id: 4,
+    _id: "4",
     name: "The Hammered Band",
     description: "c.1960s spoon, minimalist forged texture",
     price: "$125",
@@ -63,7 +78,7 @@ const rings = [
     image: "/ring7.png",
   },
   {
-    id: 5,
+    _id: "5",
     name: "The Fiddle Thread",
     description: "c.1850s fiddle pattern, thread edge detail",
     price: "$155",
@@ -77,7 +92,7 @@ const rings = [
     image: "/ring4.png",
   },
   {
-    id: 6,
+    _id: "6",
     name: "The Wide Spoon",
     description: "c.1900 serving spoon, bold statement piece",
     price: "$195",
@@ -91,7 +106,7 @@ const rings = [
     image: "/ring8.png",
   },
   {
-    id: 7,
+    _id: "7",
     name: "The Thistle",
     description: "c.1890s Scottish silver, thistle crest detail",
     price: "$172",
@@ -105,7 +120,7 @@ const rings = [
     image: "/ring12.png",
   },
   {
-    id: 8,
+    _id: "8",
     name: "The King's Pattern",
     description: "c.1870s English silver, royal shell & scroll",
     price: "$215",
@@ -119,7 +134,7 @@ const rings = [
     image: "/ring13.png",
   },
   {
-    id: 9,
+    _id: "9",
     name: "The Lily of the Valley",
     description: "c.1895 sterling, delicate floral spray",
     price: "$168",
@@ -133,7 +148,7 @@ const rings = [
     image: "/ring14.png",
   },
   {
-    id: 10,
+    _id: "10",
     name: "The Rattail",
     description: "c.1710s Queen Anne rattail drop pattern",
     price: "$245",
@@ -147,7 +162,7 @@ const rings = [
     image: "/ring15.png",
   },
   {
-    id: 11,
+    _id: "11",
     name: "The Hourglass",
     description: "c.1940s tapered waist, elegant mid-century form",
     price: "$138",
@@ -162,10 +177,11 @@ const rings = [
   },
 ];
 
-export function CollectionSection() {
+export function CollectionSection({ rings }: { rings?: Ring[] }) {
+  const displayRings = rings && rings.length > 0 ? rings : hardcodedRings;
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, 0.05);
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
   const { addItem, openCart } = useCart();
 
   return (
@@ -205,17 +221,17 @@ export function CollectionSection() {
 
         {/* Grid */}
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {rings.map((ring, i) => (
+          {displayRings.map((ring, i) => (
             <RingCard
-              key={ring.id}
+              key={ring._id}
               ring={ring}
               delay={i * 80}
               inView={inView}
-              hovered={hoveredId === ring.id}
-              onHover={() => setHoveredId(ring.id)}
+              hovered={hoveredId === ring._id}
+              onHover={() => setHoveredId(ring._id)}
               onLeave={() => setHoveredId(null)}
               onAddToCart={(size) => {
-                addItem({ id: ring.id, name: ring.name, price: ring.price, image: ring.image, size });
+                addItem({ id: ring._id, name: ring.name, price: ring.price, image: ring.image, size });
                 openCart();
               }}
             />
@@ -254,7 +270,7 @@ function RingCard({
   onLeave,
   onAddToCart,
 }: {
-  ring: (typeof rings)[0];
+  ring: Ring;
   delay: number;
   inView: boolean;
   hovered: boolean;
@@ -398,13 +414,12 @@ function RingCard({
   );
 }
 
-function RingSVG({ ring }: { ring: (typeof rings)[0] }) {
+function RingSVG({ ring }: { ring: Ring }) {
   const patterns: Record<string, React.ReactElement> = {
     rose: (
       <svg viewBox="0 0 200 200" className="w-40 h-40" fill="none">
         <ellipse cx="100" cy="100" rx="72" ry="32" stroke={ring.svgColor} strokeWidth="8" strokeLinecap="round"/>
         <path d="M60 100 C65 88 80 82 100 82 C120 82 135 88 140 100" stroke={ring.svgColor} strokeWidth="4" fill="none" opacity="0.4"/>
-        {/* Rose petals pattern */}
         {[0,60,120,180,240,300].map((a,i) => (
           <ellipse key={i} cx={100 + 55*Math.cos(a*Math.PI/180)} cy={100 + 23*Math.sin(a*Math.PI/180)} rx="6" ry="3" fill={ring.svgColor} opacity="0.3" transform={`rotate(${a}, ${100 + 55*Math.cos(a*Math.PI/180)}, ${100 + 23*Math.sin(a*Math.PI/180)})`}/>
         ))}
@@ -415,7 +430,6 @@ function RingSVG({ ring }: { ring: (typeof rings)[0] }) {
         <ellipse cx="100" cy="100" rx="72" ry="32" stroke={ring.svgColor} strokeWidth="8" strokeLinecap="round"/>
         <path d="M50 100 Q70 70 100 68 Q130 70 150 100" stroke={ring.svgColor} strokeWidth="3" fill="none" opacity="0.5"/>
         <path d="M55 104 Q70 78 100 76 Q130 78 145 104" stroke={ring.svgColor} strokeWidth="1.5" fill="none" opacity="0.3"/>
-        {/* Flowing lines */}
         <path d="M65 95 Q80 80 100 80 Q120 80 135 95" stroke={ring.svgColor} strokeWidth="2" fill="none" opacity="0.4"/>
       </svg>
     ),
@@ -428,7 +442,6 @@ function RingSVG({ ring }: { ring: (typeof rings)[0] }) {
     hammered: (
       <svg viewBox="0 0 200 200" className="w-40 h-40" fill="none">
         <ellipse cx="100" cy="100" rx="72" ry="32" stroke={ring.svgColor} strokeWidth="10" strokeLinecap="round"/>
-        {/* Hammered texture dots - pre-calculated positions */}
         <circle cx="172" cy="100" r="2" fill={ring.svgColor} opacity="0.4"/>
         <circle cx="163.9" cy="110.0" r="2" fill={ring.svgColor} opacity="0.4"/>
         <circle cx="141.8" cy="118.2" r="2" fill={ring.svgColor} opacity="0.4"/>
@@ -448,7 +461,6 @@ function RingSVG({ ring }: { ring: (typeof rings)[0] }) {
     fiddle: (
       <svg viewBox="0 0 200 200" className="w-40 h-40" fill="none">
         <ellipse cx="100" cy="100" rx="72" ry="32" stroke={ring.svgColor} strokeWidth="8" strokeLinecap="round"/>
-        {/* Thread edge detail */}
         <ellipse cx="100" cy="100" rx="78" ry="36" stroke={ring.svgColor} strokeWidth="1.5" strokeDasharray="4 3" opacity="0.4"/>
         <ellipse cx="100" cy="100" rx="66" ry="28" stroke={ring.svgColor} strokeWidth="1.5" strokeDasharray="4 3" opacity="0.3"/>
       </svg>
@@ -457,7 +469,6 @@ function RingSVG({ ring }: { ring: (typeof rings)[0] }) {
       <svg viewBox="0 0 200 200" className="w-40 h-40" fill="none">
         <ellipse cx="100" cy="100" rx="72" ry="32" stroke={ring.svgColor} strokeWidth="16" strokeLinecap="round" opacity="0.8"/>
         <ellipse cx="100" cy="100" rx="72" ry="32" stroke={ring.svgColor} strokeWidth="1.5" opacity="0.4"/>
-        {/* Wide band pattern lines */}
         <ellipse cx="100" cy="100" rx="72" ry="32" stroke="#F0EBE1" strokeWidth="1" strokeDasharray="0 12" opacity="0.5"/>
       </svg>
     ),

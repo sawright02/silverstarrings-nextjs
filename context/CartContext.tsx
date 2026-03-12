@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useReducer, useState } from "react";
 
 export type CartItem = {
-  id: number;
+  id: string;
   name: string;
   price: string;
   image?: string;
@@ -16,7 +16,7 @@ type CartState = {
 
 type CartAction =
   | { type: "ADD_ITEM"; item: CartItem }
-  | { type: "REMOVE_ITEM"; id: number; size: string }
+  | { type: "REMOVE_ITEM"; id: string; size: string }
   | { type: "CLEAR_CART" }
   | { type: "LOAD"; items: CartItem[] };
 
@@ -47,7 +47,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 type CartContextType = {
   items: CartItem[];
   addItem: (item: CartItem) => void;
-  removeItem: (id: number, size: string) => void;
+  removeItem: (id: string, size: string) => void;
   clearCart: () => void;
   isOpen: boolean;
   openCart: () => void;

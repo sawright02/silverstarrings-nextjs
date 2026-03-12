@@ -16,7 +16,32 @@
       "Bash(ls /Users/shanewright/Development/stella/silverstarrings-nextjs/public/logo.*)",
       "Bash(identify /Users/shanewright/Development/stella/silverstarrings-nextjs/public/logo.png)",
       "Bash(node --version)",
-      "Bash(ls /Users/shanewright/Development/stella/silverstarrings-nextjs/public/ring*.png)"
+      "Bash(ls /Users/shanewright/Development/stella/silverstarrings-nextjs/public/ring*.png)",
+      "mcp__Sanity__list_projects",
+      "Bash(sanity --version)",
+      "Bash(npx sanity@latest mcp configure --help)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:v for k,v in d.items\\(\\) if ''sanity'' in k.lower\\(\\) or ''mcp'' in k.lower\\(\\)}, indent=2\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\(''mcpServers'', {}\\), indent=2\\)\\)\")",
+      "Bash(xargs ls -la)",
+      "Bash(npx sanity@latest projects list --json)",
+      "Bash(SANITY_AUTH_TOKEN=\"sk7fFCVFji7JkIsWC1CTPKmQsSy0bU7YUhjxCcEy8zNF1AZkXQRuf9LrM3ueJSPvUXvQWUBDZjojUcOSP\" curl -s \"https://api.sanity.io/v2021-06-07/projects\" -H \"Authorization: Bearer sk7fFCVFji7JkIsWC1CTPKmQsSy0bU7YUhjxCcEy8zNF1AZkXQRuf9LrM3ueJSPvUXvQWUBDZjojUcOSP\")",
+      "Bash(python3 -m json.tool)",
+      "mcp__Sanity__list_sanity_rules",
+      "mcp__Sanity__get_sanity_rules",
+      "Bash(npm install next-sanity sanity @sanity/image-url @sanity/icons @sanity/vision)",
+      "Bash(npm view next-sanity versions --json)",
+      "Bash(python3 -c \"import json,sys; v=json.load\\(sys.stdin\\); print\\(''\\\\n''.join\\(v[-10:]\\)\\)\")",
+      "Bash(npm view next-sanity@\">=9 <12\" versions --json)",
+      "Bash(python3 -c \"import json,sys; v=json.load\\(sys.stdin\\); print\\(''\\\\n''.join\\(v[-15:]\\)\\)\")",
+      "Bash(npm view next-sanity@11 peerDependencies)",
+      "Bash(npm view next-sanity@\"^11\" version)",
+      "Bash(npm install next-sanity@11 sanity @sanity/image-url @sanity/icons @sanity/vision)",
+      "Bash(mkdir -p /Users/shanewright/Development/stella/silverstarrings-nextjs/sanity/schemaTypes)",
+      "Bash(mkdir -p /Users/shanewright/Development/stella/silverstarrings-nextjs/sanity/lib)",
+      "Bash(mkdir -p /Users/shanewright/Development/stella/silverstarrings-nextjs/app/studio/[[...tool]])",
+      "Bash(npx tsc --noEmit)",
+      "Bash(node -e \"require\\(''@sanity/image-url''\\)\")",
+      "Bash(npm uninstall @sanity/vision)"
     ]
   }
 }
